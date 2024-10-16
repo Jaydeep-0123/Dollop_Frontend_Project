@@ -1,0 +1,47 @@
+.module{
+    margin-left: 15%;
+
+}
+#input{
+    width: 45%;
+    margin-left: 35%;
+
+}
+#lable{
+    
+    font-weight: 500;
+    margin:12px
+}
+#link{
+    margin: 12px;
+    text-align: right;
+    margin-right: 19%;
+    color: rgb(236, 102, 6);
+}
+#btn{
+    background-color: rgb(236, 102, 6);
+    width: 30%;
+    margin: 12px;
+    margin-left: 18%;
+    color: white;
+}
+#btn:hover{
+    background-color: blue;
+}
+#account{
+    margin-left: 20%;
+    font-weight: bold;
+}
+#register{
+    margin: 5px;
+    color: rgb(236, 102, 6);
+    text-decoration: none;
+
+
+}
+#para{
+    margin-top: 12px;
+    color: rgb(236, 103, 9);
+    margin-left: 18vh;
+    
+}

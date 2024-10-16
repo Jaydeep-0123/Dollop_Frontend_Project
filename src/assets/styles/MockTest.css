@@ -1,0 +1,11 @@
+@media (max-width:400px) {
+    .col-6{
+     width: 100%;
+    }
+}
+
+ul li .active{
+    background-color: rgb(207, 93, 44);
+    color: white !important;
+}
+

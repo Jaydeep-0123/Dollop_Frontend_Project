@@ -1,0 +1,14 @@
+
+
+#children_container{
+   overflow: hidden;
+}
+  
+@media  (max-width: 1013px) {
+   #children_container {
+      width: 100% !important;
+   }
+   .main_Layout{
+       width: 0% !important; 
+   }
+}

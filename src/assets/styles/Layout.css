@@ -1,0 +1,20 @@
+.main_Div{
+    /* background-image: url('../image/image1.jpg'); */
+    background-image: url("../image/image1.jpg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh; 
+    /* display: flex; */
+    align-items: center; 
+    justify-content: center; 
+    width: 100vw; 
+    overflow:hidden;
+}
+
+@media screen and (max-width: 400px) {
+    .main_Div{
+        background-image: none;
+        background-color:  #002244;;
+    }
+  }
