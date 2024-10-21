@@ -7,9 +7,10 @@ import Otp from './screens/Otp';
 import NewPassword from './screens/NewPassword';
 import Home from './screens/Home';
 import ShowUser from './screens/ShowUser';
+import MockTest2 from './screens/MockTest2'
 import EmailFuncationality from './screens/EmailFuncationality';
 import Coordinate from './screens/Coordinate';
-import MockTest from './screens/MockTest';
+import DashBoardCarousal from './screens/DashBoardCarousal';
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
         <Route path="/showUser" element={<ShowUser/>}></Route>
         <Route path="/emailFuncationality" element={<EmailFuncationality/>}></Route>
         <Route path="/coordinate" element={<Coordinate/>}></Route>
-        <Route path="/mock_test" element={<MockTest/>}></Route>
+        <Route path="/mock_test" element={<MockTest2/>}></Route>
+        <Route path="/dashBoard" element={<DashBoardCarousal/>}></Route>
       </Routes>
      </BrowserRouter>
     </div>

@@ -11,26 +11,35 @@ export default function MockTest() {
   const url=process.env.REACT_APP_BASE_URL;
   
   const [data,setData]=useState([]);
-  const [subject,setSubject]=useState({})
+  const [subject,setSubject]=useState(null)
   const [subjectId,setSubjectId]=useState(null);
   const [active,setActive]=useState();
+  const [show, setShow] = useState(Array(data.length).fill(false));
+
+const handleToggle = (index) => {
+  setShow((prevState) => {
+    const newShowState = [...prevState];
+    newShowState[index] = !newShowState[index];
+    return newShowState;
+  });
+};
 
 
-  console.log(data);
-  const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcwMDExZWYzZjM4MmE4OTg2MmU0OGI0IiwiaWF0IjoxNzI5MDgwODg2LCJleHAiOjE3MjkxNjcyODZ9.iu0qT6knP42s8fAPt4AObPKe2NFnwk3olBUPNaQNhd4";
+
+  const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZhYTJmYmI3NTNkODA1YTlhYTAzNzkwIiwiaWF0IjoxNzI5MjQxOTI0LCJleHAiOjE3MjkzMjgzMjR9.8qHw_XMgIIOZirN57ZfVomCBYhz6mDssWtSOKFcTkrE";
   
     
     const getMockData=async()=>
     {
         try 
         {
-            const response = await axios.get(`http://13.235.121.38:5001/mockTest/viewresult`,{
+            const response = await axios.get(`http://192.168.0.15:5003/mockTest/viewresult`,{
                 headers:{
                     'Authorization': `Bearer ${token}`
                 },
                 params:{
-                    mockTest_id: "67000a073f382a89862e47cb",
-                   mockTestSubmissions_id: "670d11801c7b3db481d25cbd",
+                    mockTest_id: "66d99c5778fcecd7f027d081",
+                    mockTestSubmissions_id: "6708d56a39bd1c847d7b97f3",
                   subject_id: subjectId
                 }
             })
@@ -38,8 +47,8 @@ export default function MockTest() {
             if(response.status===200)
             {
                 setData(response.data.data)
+                setActive(subjectId?subjectId:response.data.data.subjects[0].subjectId)
                 setSubject(subject?subject:response.data.data.subjects[0])
-                // console.log(response.data.data)
             } 
         } 
         catch (error) 
@@ -91,7 +100,7 @@ export default function MockTest() {
                 <div className='p-2 d-flex justify-content-center align-items-center col-6 col-sm-6 col-md-3 col-lg-3 '>
                 <div className=' text-start text-light '>
                             {/* <i class="fa-solid fa-bell rounded-5 bg-success p-3"></i> */}
-                            <img src={stopWatch} width={80} height={80} className='rounded-5' alt="watch"/>
+                            <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
 
                            
                     </div>
@@ -103,7 +112,7 @@ export default function MockTest() {
                 <div className='p-2 d-flex justify-content-center align-items-center col-6 col-sm-6 col-md-3 col-lg-3 '>
                     <div className=' text-start text-light '>
                             {/* <i class="fa-solid fa-bell bg-success p-3"></i> */}
-                            <img src={stopWatch} width={80} height={80} className='rounded-5' alt="watch"/>
+                            <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
                     </div>
                     <div className='text-start px-3'>
                         <h5 className='p-0 m-0  '>{data?.totalAttemptQuestions}/{data.totalQuestions}</h5>
@@ -113,7 +122,7 @@ export default function MockTest() {
                 <div className='p-2 d-flex justify-content-center align-items-center col-6 col-sm-6 col-md-3 col-lg-3 '>
                     <div className=' text-start text-light '>
                             {/* <i class="fa-solid fa-bell rounded-5 bg-success p-3"></i> */}
-                            <img src={stopWatch} width={80} height={80} className='rounded-5' alt="watch"/>
+                            <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
 
                     </div>
                     <div className='text-start px-3'>
@@ -124,7 +133,7 @@ export default function MockTest() {
                 <div className='p-2 d-flex justify-content-center align-items-center col-6 col-sm-6 col-md-3 col-lg-3 '>
                     <div className=' text-start text-light '>
                             {/* <i class="fa-solid fa-bell rounded-5 bg-success p-3"></i> */}
-                            <img src={stopWatch} width={80} height={80} className='rounded-5' alt="watch"/>
+                            <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
 
                     </div>
                     <div className='text-start px-3'>
@@ -142,10 +151,11 @@ export default function MockTest() {
                 <div className='p-2 d-flex justify-content-center align-items-center col-6 col-sm-6 col-md-3 col-lg-3 '>
                 <div className=' text-start text-light '>
                             {/* <i class="fa-solid fa-bell rounded-5 bg-success p-3"></i> */}
-                            <img src={stopWatch} width={80} height={80} className='rounded-5' alt="watch"/>
+                            <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
 
                     </div>
                     <div className='text-start px-3'>
+                      <div className='text-muted'>hh:mm:ss</div> 
                         <h5 className='p-0 m-0  '>{data.startTime}</h5>
                         <span className='text-muted' style={{fontSize:'12px'}}>Start Time</span>
                     </div>
@@ -153,10 +163,11 @@ export default function MockTest() {
                 <div className='p-2 d-flex justify-content-center align-items-center col-6 col-sm-6 col-md-3 col-lg-3 '>
                     <div className=' text-start text-light '>
                             {/* <i class="fa-solid fa-bell rounded-5 bg-success p-3"></i> */}
-                            <img src={stopWatch} width={80} height={80} className='rounded-5' alt="watch"/>
+                            <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
 
                     </div>
                     <div className='text-start px-3'>
+                     <div className='text-muted'> hh:mm:ss</div>
                         <h5 className='p-0 m-0  '>{data.endTime}</h5>
                         <span className='text-muted' style={{fontSize:'12px'}}>End Time</span>
                     </div>
@@ -164,10 +175,11 @@ export default function MockTest() {
                 <div className='p-2 d-flex justify-content-center align-items-center col-6 col-sm-6 col-md-3 col-lg-3 '>
                     <div className=' text-start text-light '>
                             {/* <i class="fa-solid fa-bell rounded-5 bg-success p-3"></i> */}
-                            <img src={stopWatch} width={80} height={80} className='rounded-5' alt="watch"/>
+                            <img src={stopWatch}width={65} height={65} className='rounded-5' alt="watch"/>
 
                     </div>
                     <div className='text-start px-3'>
+                    <div className='text-muted'>hh:mm:ss</div>
                         <h5 className='p-0 m-0  '>{data?.submittedTime}</h5>
                         <span className='text-muted' style={{fontSize:'12px'}}>Time Tekon</span>
                     </div>
@@ -176,14 +188,14 @@ export default function MockTest() {
             </div>
       </div>
      <div>
-        <nav className="navbar navbar-expand-sm navbar-light py-3">
+        <nav className="navbar navbar-expand navbar-light py-3">
         <div className="container-fluid">
             <div id="navbarText">
-            <ul className="navbar-nav mb-2 mb-lg-0 fw-bold">
-            {data.subjects?.map((val)=>{
-                return <li className="nav-item">
+            <ul className="navbar-nav  fw-bold">
+            {data.subjects?.map((val,index)=>{
+                return <li className="nav-item px-2" key={index}>
                     {/* <Link className="nav-link active rounded-2 m-2" aria-current="page" to="" onClick={()=>{handleClick(val)}}>{val.subjectName}</Link> */}
-                    <Link className={`nav-link rounded-2 ${active===val.subjectId?'active':''}`} aria-current="page" to="" onClick={()=>handleClick(val)}>{val.subjectName}</Link>
+                    <Link  className={`nav-link rounded-2 ${active===val.subjectId?'active':''}`} aria-current="page" to="" onClick={()=>handleClick(val)}>{val.subjectName}</Link>
                 </li>
             })
                    
@@ -195,7 +207,7 @@ export default function MockTest() {
         </nav>
 
      </div>
-     <div className='text-start fw-bold bg-light p-3 rounded-3'>
+     <div className='text-start fw-bold shadow bg-light p-3 rounded-3'>
          <div className='text-start text-primary'>
                Subject Performance Summary
          </div>
@@ -203,7 +215,7 @@ export default function MockTest() {
                 <div className='p-2 d-flex justify-content-center align-items-center col-6 col-sm-6 col-md-3 col-lg-3 '>
                 <div className=' text-start text-light '>
                             {/* <i class="rounded-5  bg-success p-3"></i> */}
-                            <img src={stopWatch} width={80} height={80} className='rounded-5' alt="watch"/>
+                            <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
 
                     </div>
                     <div className='text-start px-3'>
@@ -246,71 +258,276 @@ export default function MockTest() {
                 </div>
                 </div>
             </div>
+            <div className='p-2'>
             {data.questions?.map((quest, index) => {
             return (
-              <div className="card mb-4" key={index}>
-                <div className="card-body">
+              <div>
+              <div className="mb-4 px-3" key={index}>
+                <div className="">
                   <p>
-                    <strong>Question {index + 1} (2 Marks)</strong>
+                  <strong>
+                        Question {index + 1}{" "}
+                        {quest.subQuestions.length ? (
+                          ""
+                        ) : quest.selectedOption !== null ? (
+                          quest.correctOption === quest.selectedOption ? (
+                            <label className="mx-2" style={{color:"#23bc23"}}>
+                              {" "}
+                              (+2 Marks)
+                            </label>
+                          ) : (
+                            <label className=" text-danger mx-2"> (0.5 Marks)</label>
+                          )
+                        ) : (
+                          <label className=" text-danger"> (not attempted)</label>
+                        )}
+                      </strong>
                   </p> 
                
                   <p>{quest.question.replace(/<[^>]*>/g, '')}</p>
-
+                    {quest.subQuestions?.map((val,index)=>
+                    {
+                      return  <div className="mb-4" key={index}>
+                <div className="card-body">
+                  <p>
+                  <strong> Question {index + 1}
+                                {val.selectedOption !== null ? (
+                                  val.correctOption ===
+                                  val.selectedOption ? (
+                                    <label className="mx-2" style={{color:"#23bc23"}}>
+                                      (+2 Marks){" "}
+                                    </label>
+                                  ) : (
+                                    <label className=" text-danger mx-2">
+                                      (0.5 Marks){" "}
+                                    </label>
+                                  )
+                                ) : (
+                                  <label className=" text-danger">
+                                    (not attempted)
+                                  </label>
+                                )}
+                              </strong>
+                  </p> 
+               
+                  <p>{val.question.replace(/<[^>]*>/g, '')}</p>
+                   
                   <form>
-                    {quest.options?.map((option, optIndex) => (
+                    {val.options?.map((option, optIndex) => (
                       <div className="form-check" key={optIndex}>
-                        <input
-                          checked={quest.correctOption===optIndex?true:false}
-                          className="form-check-input"
-                          type="checkbox"
-                          name={`question${quest.questionId}`}
-                          id={`option${optIndex}${quest.questionId}`}
-                       
-                        />
+                      <label className="checkbox-wrapper">
+                                {val.correctOption === optIndex? <input
+                                    className="custom-icon-checkbox "
+                                    type="checkbox"
+                                    checked={
+                                         true
+                                    }
+                                    name={`question${val.questionId}`}
+                                    id={`option${optIndex}${val.questionId}`}
+                                  />:'' }
+                                  {val.correctOption !== optIndex && optIndex === val.selectedOption? (
+                                    <input
+                                    className="custom-icon-checkbox"
+                                    type="checkbox"
+                                    checked={
+                                     false
+                                    }
+                                    name={`question${val.questionId}`}
+                                    id={`option${optIndex}${val.questionId}`}
+                                  />
+                                  ):''}
+                                  {val.correctOption !== optIndex && optIndex === val.selectedOption?<span className="checkbox-icon"></span>:val.correctOption === optIndex?<span className="checkbox-icon"></span>:  <span className="empty"></span>}
+                                </label>
                         <label className="form-check-label">
-                          {String.fromCharCode(65 + optIndex)}.{option}
-                          {optIndex === quest.correctOption ? (
+                        {<label className={val.correctOption===optIndex?'correct-option':" "}> {String.fromCharCode(65 + optIndex)}.{option.replace(/<[^>]*>/g, '').replace(/&nbsp;/g,'')}</label>}
+                          {/* {optIndex === val.correctOption ? (
                             <span
-                              className="fw-bold"
+                              className="fw-bold fst-italic"
                               style={{ color: "#23bc23" }}
                             >
                               &nbsp;(Correct Answer)
                             </span> 
                           )
-                          :""}
+                          :(""
+                         )} */}
+                          {
+                              optIndex !== val.correctOption && 
+                              optIndex===val.selectedOption&&(
+                                <span
+                              className="fw-bold fst-italic"
+                              style={{ color: "red" }}
+                            >
+                              &nbsp; incorrect Answer
+                            </span> 
+                              )
+                            }
+                            {
+                              optIndex === val.correctOption && 
+                              optIndex===val.selectedOption?(
+                                <span
+                              className="fw-bold"
+                                style={{ color: "#23bc23" }}
+                            >
+                              &nbsp; your Answer
+                            </span> 
+                              ):optIndex === val.correctOption ? (
+                            <span
+                              className="fw-bold fst-italic"
+                              style={{ color: "#23bc23" }}
+                            >
+                              &nbsp;(Correct Answer)
+                            </span> 
+                          )
+                          :(""
+                         )
+                            }
+                        </label>
+                        
+                      </div>
+                      
+                    ))}
+                   
+                   
+                    <button className="btn btn-link text-decoration-none mt-2 fw-bold text-dark">
+                    <IoBulbSharp
+                      className="fw-bold"
+                      style={{ color: "#F6821F" }}
+                    />
+                    &nbsp; Solution &nbsp;{" "}
+                    <Link
+                      onClick={() => handleToggle(index)}
+                      className="btn text-decoration-none fw-bold fst-italic"
+                      role="button"
+                      style={{ color: "#F6821F" }}
+                      aria-expanded={show[index] ? "true" : "false"}
+                      aria-controls={`collapseExample${index}`}
+                      key={index}
+                    >
+                      {show[index] ? "Hide" : "Show"}
+                    </Link>
+                  </button>
+
+                  
+                      <div className={`collapse ${show[index] ? 'show' : ''}`} id={`collapseExample${index}`}>
+                        <div className="card-body">
+                          {val.solution?.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ") || "No solution provided."}
+                        </div>
+                      </div>
+                 
+                        <hr/>
+                  </form>
+
+                </div>
+              </div>
+              
+                    })}
+
+
+                  <form>
+                    {quest.options?.map((option, optIndex) => (
+                      <div className="form-check " key={optIndex}>
+                      <label className="checkbox-wrapper">
+                                {quest.correctOption === optIndex? <input
+                                    className="custom-icon-checkbox"
+                                    type="checkbox"
+                                    checked={
+                                         true
+                                    }
+                                    name={`question${quest.questionId}`}
+                                    id={`option${optIndex}${quest.questionId}`}
+                                  />:'' }
+                                  {quest.correctOption !== optIndex && optIndex === quest.selectedOption? (
+                                    <input
+                                    className="custom-icon-checkbox"
+                                    type="checkbox"
+                                    checked={
+                                     false
+                                    }
+                                    name={`question${quest.questionId}`}
+                                    id={`option${optIndex}${quest.questionId}`}
+                                  />
+                                  ):''}
+                                  {quest.correctOption !== optIndex && optIndex === quest.selectedOption?<span className="checkbox-icon"></span>:quest.correctOption === optIndex?<span className="checkbox-icon"></span>:  <span className="empty"></span>}
+                                </label>
+                        
+                        <label className="form-check-label ">
+                        {<label className={quest.correctOption===optIndex?'correct-option':" "}> {String.fromCharCode(65 + optIndex)}.{option.replace(/<[^>]*>/g, '')}</label>}
+                          
+                          {
+                              optIndex !== quest.correctOption && 
+                              optIndex===quest.selectedOption&&(
+                                <span
+                              className="fw-bold fst-italic"
+                              style={{ color: "red" }}
+                            >
+                              &nbsp; incorrect Answer
+                            </span> 
+                              )
+                            }
+                            {
+                              optIndex === quest.correctOption && 
+                              optIndex===quest.selectedOption?(
+                                <span
+                              className="fw-bold"
+                              style={{ color: "green" }}
+                            >
+                              &nbsp; your Answer
+                            </span> 
+                              ):optIndex === quest.correctOption ? (
+                            <span
+                              className="fw-bold fst-italic"
+                              style={{ color: "#23bc23" }}
+                            >
+                              &nbsp;Correct Answer
+                            </span> 
+                          )
+                          :" "  
+                            }
+                            
                         </label>
                       </div>
                     ))}
                   </form>
-
+                  {quest.typeOfQuestion==="General"?
+                <div>
                   <button className="btn btn-link text-decoration-none mt-2 fw-bold text-dark">
                     <IoBulbSharp
                       className="fw-bold"
                       style={{ color: "#F6821F" }}
                     />
                     &nbsp; Solution &nbsp;{" "}
-                    <a
+                    <Link
+                      onClick={() => handleToggle(index)}
                       className="btn text-decoration-none fw-bold fst-italic"
-                      data-bs-toggle="collapse"
-                      href={`#collapseExample${index}`}
                       role="button"
-                      aria-expanded="false"
-                      aria-controls={`collapseExample${index}`}
                       style={{ color: "#F6821F" }}
+                      aria-expanded={show[index] ? "true" : "false"}
+                      aria-controls={`collapseExample${index}`}
+                      key={index}
                     >
-                      Show
-                    </a>
+                      {show[index] ? "Hide" : "Show"}
+                    </Link>
                   </button>
 
-                  <div className="collapse" id={`collapseExample${index}`}>
-                    <div className="card card-body">
-                      {quest.solution || "No solution provided."}
-                    </div>
-                  </div>
+                  
+                      <div className={`collapse ${show[index] ? 'show' : ''}`} id={`collapseExample${index}`}>
+                        <div className="card-body">
+                          {quest.solution?.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ")|| "No solution provided."}
+                        </div>
+                      </div>
+                
+                      <hr/>
+                      </div>:" "
+                }
                 </div>
               </div>
+            
+              </div>
+                      
+              
             );
           })}
+          </div>
                 
     </div>
     <ToastContainer/>

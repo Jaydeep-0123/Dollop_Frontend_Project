@@ -38,9 +38,9 @@ const Sidebar = () => {
         </div>
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link text-white m-2" href="#">
+            <Link className="nav-link text-white m-2" to="/dashBoard">
               <i className="bi-speedometer2"></i> Dashboard
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a className="nav-link text-white m-2" href="#">
