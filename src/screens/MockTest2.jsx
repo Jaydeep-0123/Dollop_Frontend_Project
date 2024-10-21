@@ -413,7 +413,7 @@ finally{
                       </strong>
                     </p>
                     {/* <p>{subQuestion.question.replace(/<[^>]*>/g, "")}</p> */}
-                   <div> { parse(subQuestion.question,options)}
+                   <div> { parse(subQuestion.question,options)}</div>
 
                     <form>
                       {subQuestion.options?.map((option, optIndex) => (
