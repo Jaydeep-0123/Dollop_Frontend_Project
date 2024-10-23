@@ -11,6 +11,7 @@ import MockTest2 from './screens/MockTest2'
 import EmailFuncationality from './screens/EmailFuncationality';
 import Coordinate from './screens/Coordinate';
 import DashBoardCarousal from './screens/DashBoardCarousal';
+import QuizMock from './screens/QuizMock';
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path="/coordinate" element={<Coordinate/>}></Route>
         <Route path="/mock_test" element={<MockTest2/>}></Route>
         <Route path="/dashBoard" element={<DashBoardCarousal/>}></Route>
+        <Route path="/quiz" element={<QuizMock/>}></Route>
+        {/* <Route path="/responsive" element={<ReactResponsive/>}></Route> */}
       </Routes>
      </BrowserRouter>
     </div>

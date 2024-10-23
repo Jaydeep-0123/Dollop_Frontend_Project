@@ -43,9 +43,9 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-white m-2" href="#">
-              <i className="bi bi-bullseye"></i> Campaigns
-            </a>
+            <Link className="nav-link text-white m-2" to="/quiz">
+              <i className="bi bi-bullseye"></i> Quiz
+            </Link>
           </li>
           <li className="nav-item">
             <a className="nav-link text-white m-2" href="#" id="manage">

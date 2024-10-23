@@ -1,0 +1,53 @@
+/* Custom CSS kept minimal */
+/* .container {
+    max-width: 300px;
+    margin: auto;
+  } */
+  
+  #button1 {
+    font-size: 16px;
+    width: 48%;
+  }
+  
+  /* .badge {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  } */
+  
+  @media (max-width: 768px) {
+    .col-2 {
+      flex: 0 0 25%;
+      max-width: 50%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .col-2 {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
+  }
+
+
+
+  /* For larger screens, fix the position to the right */
+/* .position-fixed-container {
+    position:relative;
+    position:FIXED;
+    right: 0;
+    top: 0;
+    width: 120%;
+    height: 100%;
+  }
+  
+  @media (max-width: 767px) {
+    .position-fixed-container {
+      position: static;
+      width: 100%;
+      bottom: 0;
+    }
+  } */
+  
+  

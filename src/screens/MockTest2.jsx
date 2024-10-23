@@ -21,7 +21,7 @@ export default function MockTest() {
   const [loader,setLoader]=useState(false)
 const url=process.env.REACT_APP_BASE_URL;
 
-  const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZhYTJmYmI3NTNkODA1YTlhYTAzNzkwIiwiaWF0IjoxNzI5NDg2NzQ1LCJleHAiOjE3Mjk1NzMxNDV9.1OG6VdoDXwUNrd9eZXw25Z2LK98uTL-_7XjTtrYYnII"
+  const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZhYTJmYmI3NTNkODA1YTlhYTAzNzkwIiwiaWF0IjoxNzI5NjY2OTk5LCJleHAiOjE3Mjk3NTMzOTl9.dVv_tNg3lQle8bbJTiGIQCQ4h2y7O216McjlUXsJcwg    "
   // Make an API request to fetch the mock test result
   const hendleGetData = async () => {
     try
@@ -53,6 +53,8 @@ const url=process.env.REACT_APP_BASE_URL;
 catch (error) 
 {
     toast.error(error.response.data.error)
+  
+    
     
 }
 finally{
@@ -90,22 +92,43 @@ finally{
       // Handle <img> tags
       if (domNode.name === 'img') {
         const { src, width, height } = domNode.attribs;
-        return <img src={src} width={width} height={height} alt="Content Image" />;
+        return <img src={src} width={700} height={700} className="img-fluid" alt="Content Image" />;
       }
       // Handle <oembed> for videos
       if (domNode.name === 'oembed') {
         const videoUrl = domNode.attribs.url;
         const embedUrl = videoUrl.replace('youtu.be/', 'youtube.com/embed/');
         return (
-          <iframe
-            width="560"
-            height="315"
-            src={embedUrl}
-            title="YouTube video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <div className="">
+       
+            <iframe
+                 width="560"
+                 height="315"
+                   className="container w-75"
+ 
+              src={embedUrl}
+              title="YouTube video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+      
+        </div>
+
+//         <div className="container">
+//   <div className="embed-responsive embed-responsive-16by9" >
+//     <iframe
+//       className="embed-responsive-item"
+//       src={embedUrl}
+//       width="560"
+//       height="315"
+//       title="YouTube video"
+//       frameBorder="0"
+//       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//       allowFullScreen
+//     ></iframe>
+//   </div>
+// </div>
         );
       }
     },
@@ -136,7 +159,7 @@ finally{
             <div className="row d-flex align-items-start p-3 ">
               <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
                 <div className=" text-start text-light ">
-                <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+                <img src={stopWatch}  width={50} height={50} className='rounded-5' alt="watch"/>
                 </div>
                 <div className="text-start px-3">
                   <h5 className="p-0 m-0  ">
@@ -149,7 +172,7 @@ finally{
               </div>
               <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
                 <div className=" text-start text-light ">
-                <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+                <img src={stopWatch} width={50} height={50} className='rounded-5' alt="watch"/>
                 </div>
                 <div className="text-start px-3">
                   <h5 className="p-0 m-0  ">
@@ -162,7 +185,7 @@ finally{
               </div>
               <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
                 <div className=" text-start text-light ">
-                <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+                <img src={stopWatch}  width={50} height={50} className='rounded-5' alt="watch"/>
                 </div>
                 <div className="text-start px-3">
                   <h5 className="p-0 m-0  ">
@@ -175,7 +198,7 @@ finally{
               </div>
               <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
                 <div className=" text-start text-light ">
-                <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+                <img src={stopWatch} width={50} height={50} className='rounded-5' alt="watch"/>
                 </div>
                 <div className="text-start px-3">
                   <h5 className="p-0 m-0  ">
@@ -194,7 +217,7 @@ finally{
             <div className="row d-flex align-items-center p-3 ">
               <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
                 <div className=" text-start text-light ">
-                <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+                <img src={stopWatch}  width={50} height={50} className='rounded-5' alt="watch"/>
                 </div>
                 <div className="text-start px-3">
                 <span className="text-muted" style={{ fontSize: "13px" }}>
@@ -210,7 +233,7 @@ finally{
               </div>
               <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
                 <div className=" text-start text-light ">
-                <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+                <img src={stopWatch}  width={50} height={50} className='rounded-5' alt="watch"/>
                 </div>
                 <div className="text-start px-3">
                 <span className="text-muted" style={{ fontSize: "13px" }}>
@@ -226,7 +249,7 @@ finally{
               </div>
               <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
                 <div className=" text-start text-light ">
-                <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+                <img src={stopWatch}  width={50} height={50} className='rounded-5' alt="watch"/>
                 </div>
                 <div className="text-start px-3">
                 <span className="text-muted" style={{ fontSize: "13px" }}>
@@ -274,7 +297,7 @@ finally{
           <div className="row d-flex align-items-center pt-3 px-3 ">
             <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
               <div className=" text-start text-light ">
-              <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+              <img src={stopWatch}  width={50} height={50} className='rounded-5' alt="watch"/>
               </div>
               <div className="text-start px-3">
                 <h5 className="p-0 m-0  ">
@@ -287,7 +310,7 @@ finally{
             </div>
             <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
               <div className=" text-start text-light ">
-              <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+              <img src={stopWatch}  width={50} height={50} className='rounded-5' alt="watch"/>
               </div>
               <div className="text-start px-3">
                 <h5 className="p-0 m-0  ">
@@ -301,7 +324,7 @@ finally{
             </div>
             <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
               <div className=" text-start text-light ">
-              <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+              <img src={stopWatch}  width={50} height={50} className='rounded-5' alt="watch"/>
               </div>
               <div className="text-start px-3">
                 <h5 className="p-0 m-0  ">
@@ -315,7 +338,7 @@ finally{
             </div>
             <div className="p-2 d-flex justify-content-start align-items-center col-6 col-sm-6 col-md-3 col-lg-3 ">
               <div className=" text-start text-light ">
-              <img src={stopWatch} width={65} height={65} className='rounded-5' alt="watch"/>
+              <img src={stopWatch}  width={50} height={50}   className='rounded-5' alt="watch"/>
               </div>
               <div className="text-start px-3">
                 <h5 className="p-0 m-0  ">
@@ -372,7 +395,7 @@ finally{
                     <label className="text-danger mx-1"> (0.5 Marks)</label>
                   )
                 ) : (
-                  <label className="text-info"> (not attempted)</label>
+                  <label className="text-info"> (Not Answered)</label>
                 )}
               </strong>
             </p>
@@ -408,12 +431,12 @@ finally{
                             <label className="text-danger mx-1"> (0.5 Marks)</label>
                           )
                         ) : (
-                          <label className="text-danger mx-1"> (not attempted)</label>
+                          <label className="text-danger mx-1"> (Not Answered)</label>
                         )}
                       </strong>
                     </p>
                     {/* <p>{subQuestion.question.replace(/<[^>]*>/g, "")}</p> */}
-                   <div className=" fw-medium"> { parse(subQuestion.question,options)}</div>
+                   <div className="fw-medium"> { parse(subQuestion.question,options)}</div>
 
                     <form>
                       {subQuestion.options?.map((option, optIndex) => (
